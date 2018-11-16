@@ -13,7 +13,7 @@ let willCost2 = prompt("Во сколько обойдется?", "");
 let appData = {
     budget: money,
     timeData: time,
-    expenses: {spending1: willCost1, spending2: willCost2},
+    expenses: {[spending1]: willCost1, [spending2]: willCost2},
     optionalExpenses: {"": ""},
     income: [],
     savings: false
