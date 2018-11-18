@@ -14,15 +14,35 @@ let appData = {
 
 for (let i = 0; i < 2; i++) {
 	let spending1 = prompt("Введите обязательную статью расходов в этом месяце", ""),
-			willCost1 = prompt("Во сколько обойдется?", "");
+		willCost1 = prompt("Во сколько обойдется?", "");
 
 	if ( (typeof(spending1)) === "string" && (typeof(spending1)) != null && (typeof(willCost1)) != null && spending1 != "" && willCost1 != "" && spending1.length < 50) {
-			console.log("Done!");
-			appData.expenses[spending1] = willCost1;
+		console.log("Done!");
+		appData.expenses[spending1] = willCost1;
 	} else {
-			console.log("Something went wrong! Try again!");
+        alert("Необходимо ввести статью и расход!");
+
+        i = 0; // Если это не то что надо то спасите меня!
 	};
 };
+
+/* === Пробовала и так ===
+
+// outloop:
+for (let i = 0; i < 2; i++) {
+	let spending1 = prompt("Введите обязательную статью расходов в этом месяце", ""),
+			willCost1 = prompt("Во сколько обойдется?", "");
+	if ( (typeof(spending1)) === "string" && (typeof(spending1)) != null && (typeof(willCost1)) != null && spending1 != "" && willCost1 != "" && spending1.length < 50) {
+			console.log("Done!");
+			appData.expenses[spending1] = willCost1; //Объекты как ассоциативные массивы https://learn.javascript.ru/object
+			//continue outloop; // Задает вопросы как обычно и продолжает.
+			//break outloop; // В Данном случае делает то же самое что и continue.
+	} else if (i = 0 i < 2 i++) {
+			alert("Необходимо ввести статью и расход!");
+			// i = 0; // Задает вопросы заново но только 1 раз.
+			// i < 2; // Задает вопросы заново но после двух раз выходит из цикла и продолжает.
+	};
+};*/
 
 
 appData.moneyPerDay = appData.budget / 30;
