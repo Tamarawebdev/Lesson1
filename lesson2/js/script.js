@@ -21,8 +21,8 @@ for (let i = 0; i < 2; i++) {
 		appData.expenses[spending1] = willCost1;
 	} else {
         alert("Необходимо ввести статью и расход!");
-
-        i--;
+		//i--;
+		i = i - 1;
 	};
 };
 
