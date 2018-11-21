@@ -29,7 +29,7 @@ function chooseExpenses() {
 			console.log("Done!");
 			appData.expenses[spending1] = willCost1;
 	} else {
-		i = i -1;
+		i--;
 	}
     }
 }
@@ -45,7 +45,7 @@ function chooseOptExpenses() {
                 appData.optionalExpenses[num] = answer1;
         }
         } else {
-            i = i -1;
+            i--;
         }
     }
 }
