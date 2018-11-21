@@ -69,12 +69,11 @@ let appData = {
                     appData.income = items.split(", ");
                     appData.income.push(prompt("Может что то еще?"));
                     appData.income.sort();
-                    console.log("Сделано!");
-            appData.income.forEach(function(item, i, mass) {
-                    for (let num = 1; num <= 3; num++) {
-                    alert("Способы дополнительного заработка: " + num + ": " + item);
-                    }
-                });
+                    document.write("Способы дополнительного заработка:" + "</br>");
+                    appData.income.forEach(function(item, i, mass) {
+                    ++i;
+                    document.write(i + ": " + item + "</br>");
+                    });
             } else {
                 i--;
             } 
