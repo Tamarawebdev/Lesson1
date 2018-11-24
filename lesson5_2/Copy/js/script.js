@@ -1,7 +1,15 @@
 "use strict";
 
 let idStart = document.getElementById("start"),
-    classAndValue = document.querySelectorAll(".budget-value, .daybudget-value, .level-value, .expenses-value, .optionalexpenses-value, .income-value, .monthsavings-value, .yearsavings-value"),
+    budgetValue = document.getElementsByClassName("budget-value"),
+    dayBudgetValue = document.getElementsByClassName("daybudget-value"),
+    levelValue = document.getElementsByClassName("level-value"),
+    expensesValue = document.getElementsByClassName("expenses-value"),
+    optionalexpensesValue = document.getElementsByClassName("optionalexpenses-value"),
+    incomeValue = document.getElementsByClassName("income-value"),
+    monthsavingsValue = document.getElementsByClassName("monthsavings-value"),
+    yearsavingsValue = document.getElementsByClassName("yearsavings-value"),
+
     expensesClass = document.getElementsByClassName("expenses-item"),
     expensesBtn = document.getElementsByTagName("button"),
     countBtn = document.getElementsByTagName("button"),
@@ -13,4 +21,3 @@ let idStart = document.getElementById("start"),
     yearClass = document.getElementsByClassName("year"),
     monthClass = document.getElementsByClassName("month"),
     dayClass = document.getElementsByClassName("day");
-
