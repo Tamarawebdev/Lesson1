@@ -105,14 +105,14 @@ let descriptionBtnAndMore = document.querySelectorAll(".description-btn, .more")
 
     //ES6 Стрелочная функция
     descriptionBtnAndMore.forEach((e) => {
-        e.addEventListener("click", () => {
+        e.addEventListener("click", function() {
             overlay.style.display = "block";
             this.classList.add("more-splash");
             document.body.style.overflow = "hidden";
         });
     });
     
-    close.addEventListener("click", () => {
+    close.addEventListener("click", function() {
             overlay.style.display = "none";
             this.classList.remove("more-splash");
             document.body.style.overflow = "";
