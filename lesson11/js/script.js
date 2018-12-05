@@ -115,8 +115,7 @@ window.addEventListener("DOMContentLoaded", function() {
                 document.body.style.overflow = "";
             });
 
-
-     // Form
+    // Form
     let message = {
         loading: "Loading...",
         success: "Thank you, we will contact you soon!",
@@ -125,47 +124,52 @@ window.addEventListener("DOMContentLoaded", function() {
 
     let form = document.querySelector(".main-form"),
         input = form.getElementsByTagName("input"),
+        contactForm = document.getElementById('form'),
+        inputContact = contactForm.getElementsByTagName('input'),
         statusMessage = document.createElement("div");
 
         statusMessage.classList.add("status");
 
-    form.addEventListener("submit", function(event) {
-        if (!/\d/.test(event.key) && !/\+/.test(event.key)) {
-            event.preventDefault();
-        //event.preventDefault(); 
-            }
-        form.appendChild(statusMessage);
 
-        let myRequest = new XMLHttpRequest();
-        myRequest.open("POST", "server.php");
-        myRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+   function sendForm(elem, a) {
+       elem.addEventListener("submit", function (event) {
+           event.preventDefault();
+           elem.appendChild(statusMessage);
+           let myRequest = new XMLHttpRequest();
+           myRequest.open("POST", "server.php");
+           myRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 
-        let formData = new FormData(form);
+           let formData = new FormData(elem);
 
-        let obj = {};
-        formData.forEach(function(value, key) {
-            obj[key] = value;
-        });
-        let json = JSON.stringify(obj);
+           myRequest.send(formData);
 
-        myRequest.send(formData);
+           myRequest.addEventListener("readystatechange", function () {
+               if (myRequest.readyState < 4) {
+                   statusMessage.innerHTML = message.loading;
+               } else if (myRequest.readyState === 4 && myRequest.status == 200) {
+                   statusMessage.innerHTML = message.success;
+               } else {
+                   statusMessage.innerHTML = message.failure;
+               }
+           });
 
-        myRequest.addEventListener("readystatechange", function() {
-            if (myRequest.readyState < 4) {
-                statusMessage.innerHTML = message.loading;
-            } else if (myRequest.readyState === 4 && myRequest.status == 200) {
-                statusMessage.innerHTML = message.success;
-            } else {
-                statusMessage.innerHTML = message.failure;
-            }
-        });
+           for (let i = 0; i < a.length; i++) {
+               a[i].value = "";
+           }
+       });
+   }
 
-            for (let i = 0; i < input.length; i++) {
-                input[i].value = "";
-            }
-   });
+   sendForm(form, input);
+   sendForm(contactForm, inputContact);
 
+   let phone = document.querySelectorAll('[name="phone"]');
+   console.log(phone);
 
+   for (let i = 0; i < phone.length; i++) {
+       phone[i].addEventListener('input', function () {
+            phone[i].value = phone[i].value.replace(/[^0-9 +]/g, "");
+       });
+   }
 
 
 });
