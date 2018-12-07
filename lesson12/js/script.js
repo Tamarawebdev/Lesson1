@@ -164,6 +164,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
             postData(formData)
                 .then(() => statusMessage.innerHTML = message.loading)
+                .then(() => statusMessage.innerHTML = message.success)
                 .catch(() => statusMessage.innerHTML = message.failure)
                 .then(clearInput)
 
